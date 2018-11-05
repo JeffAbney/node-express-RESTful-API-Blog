@@ -3,6 +3,7 @@ const logger = require('morgan')
 const errorhandler = require('errorhandler')
 const bodyParser = require('body-parser')
 const posts = require('./routes/posts')
+const comments = require('./routes/comments')
 
 let app = express()
 
@@ -26,6 +27,9 @@ let store = {
 }
 
 posts.getPost(app, store)
+posts.addPost(app, store)
+posts.updatePost(app, store)
+posts.removePost(app, store)
 
 
 
