@@ -2,8 +2,8 @@ module.exports = {
 
   getComments: function(app, store) {
     app.get('/posts/:postId/comments', (req, res) => {
-      res.send(store.posts[req.params.postId.comments])
       console.log("Getting comments", store.posts[req.params.postId].comments)
+      res.send(store.posts[req.params.postId].comments)
     })
   }, 
   addComment: function(app,store) {
@@ -24,7 +24,7 @@ module.exports = {
   },
 
   /*NOT WORKING */
-  
+
   removeComment: function(app, store) {
   	app.delete('posts/:postId/comments/:commentId', (req, res) => {
       store.posts[req.params.postId].comments.splice(req.params.commentId, 1)

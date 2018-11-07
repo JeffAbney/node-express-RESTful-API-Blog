@@ -21,7 +21,7 @@ module.exports = {
     })
   },
   removePost: function(app, store) {
-  	app.delete('/posts/:postID', (req, res) => {
+  	app.delete('/posts/:postId', (req, res) => {
       store.posts.splice(req.params.postId, 1)
       console.log("Deleting Post", store.posts)
       res.sendStatus(204)
