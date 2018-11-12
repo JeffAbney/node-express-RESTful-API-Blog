@@ -23,10 +23,8 @@ module.exports = {
     })
   },
 
-  /*NOT WORKING */
-
   removeComment: function(app, store) {
-  	app.delete('posts/:postId/comments/:commentId', (req, res) => {
+  	app.delete('/posts/:postId/comments/:commentId', (req, res) => {
       store.posts[req.params.postId].comments.splice(req.params.commentId, 1)
       console.log("Deleting comment", store.posts[req.params.postId].comments)
       res.sendStatus(204)
