@@ -15,6 +15,9 @@ module.exports = {
   },
   updatePost: function(app, store) {
   	app.put('/posts/:postId', (req, res) => {
+      if (req.params.postId >= store.posts.length) {
+        res.sendStatus(404)
+      }
   	  Object.assign(store.posts[req.params.postId], req.body)
   	  console.log("Updating post", store.posts[req.params.postId])
       res.sendStatus(204)
@@ -22,6 +25,9 @@ module.exports = {
   },
   removePost: function(app, store) {
   	app.delete('/posts/:postId', (req, res) => {
+      if (req.params.postId >= store.posts.length) {
+        res.sendStatus(404)
+      }
       store.posts.splice(req.params.postId, 1)
       console.log("Deleting Post", store.posts)
       res.sendStatus(204)
